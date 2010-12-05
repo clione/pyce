@@ -11,12 +11,19 @@
 
 import random
 import sys
+import random
+import sys
+import pdb
 
 wordlist = 'wordlist.txt'
-rolls = 5 # We assume that we use 5 dies in each roll
-numbers = [[] for i in range(5)] # Store numbers in a list of lists
-lists = 0 
+# This is the number of rolls (or words) you want for your password
+# the highest, the better. 
+rolls = 5
+
+numbers = [[] for i in range(rolls)]
+lists = 0
 count = 0
+ranges = rolls
 
 while rolls > 0:
     while count < 5:
@@ -28,11 +35,12 @@ while rolls > 0:
     rolls -= 1
 
 print '\nSequences for Diceware password:\n'
+#print numbers
 
-for i in range(5):
-    print 'Sequence', i, ': ' + str(numbers[i])
+for i in range(ranges):
+    print 'Sequence', i, ': ', numbers[i]
 
-for number in range(5):
+for number in range(ranges):
     numbers[number] = map(str, numbers[number])
     numbers[number] = ''.join(numbers[number])
 #    print numbers
@@ -41,8 +49,8 @@ sys.stdout.write('\nPassword: ')
 f = open(wordlist, 'r')
 for line in f:
     num = line.split()
-    if any([num[0] == numbers[0], num[0] == numbers[1], num[0] == numbers[2],
-            num[0] == numbers[3], num[0] == numbers[4]]):
-        sys.stdout.write(num[1])
+    for i in range(ranges):
+        if num[0] == numbers[i]:
+            sys.stdout.write(num[1])
 
 print '\n'
