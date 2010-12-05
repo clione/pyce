@@ -11,9 +11,6 @@
 
 import random
 import sys
-import random
-import sys
-import pdb
 
 wordlist = 'wordlist.txt'
 # This is the number of rolls (or words) you want for your password
@@ -35,15 +32,13 @@ while rolls > 0:
     rolls -= 1
 
 print '\nSequences for Diceware password:\n'
-#print numbers
 
 for i in range(ranges):
-    print 'Sequence', i, ': ', numbers[i]
+    print 'Sequence', i, ':', numbers[i]
 
 for number in range(ranges):
     numbers[number] = map(str, numbers[number])
     numbers[number] = ''.join(numbers[number])
-#    print numbers
 
 sys.stdout.write('\nPassword: ')
 f = open(wordlist, 'r')
