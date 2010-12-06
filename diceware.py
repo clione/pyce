@@ -2,12 +2,9 @@
 # -*- coding: utf-8 -*-
 # vim:fenc=utf-8
 #
-# Copyright (c) 2010 Oscar Carballal Prego <info@oscarcp.com>
+# Author: Oscar Carballal <oscar.carballal@gmail.com>
 #
-# Distributed under terms of the MIT license.
-
-# WARNING: Pyce is meant to be used in non critical environments. Do not use
-#          the generated passwords in your company or in critical environments!
+# Contributions: Arnold Reinhold <reinhold@world.std.com>
 
 import random
 import sys
@@ -22,9 +19,11 @@ lists = 0
 count = 0
 ranges = rolls
 
+myrg = random.SystemRandom
+
 while rolls > 0:
     while count < 5:
-        n = random.randint(1,6)
+        n = myrg(random).randint(1,6)
         numbers[lists].append(n)
         count += 1
     lists += 1
